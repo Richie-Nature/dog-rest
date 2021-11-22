@@ -1,0 +1,23 @@
+package com.rest.dogs.repository;
+
+import com.rest.dogs.entity.Dog;
+import com.rest.dogs.view.DogBreedView;
+import com.rest.dogs.view.DogNameView;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Collection;
+import java.util.List;
+
+@Repository
+public interface DogRepository extends CrudRepository<Dog, Long> {
+   @Query("select d.id, d.breed from Dog d where d.id=:id")
+   String findBreedById(Long id);
+
+   @Query("select d.id, d.breed from Dog d")
+    List<String> findAllBreed();
+
+   @Query("select d.id, d.name from Dog d")
+    List<String> findAllName();
+}
