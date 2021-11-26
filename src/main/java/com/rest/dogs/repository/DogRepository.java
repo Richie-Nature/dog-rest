@@ -1,13 +1,10 @@
 package com.rest.dogs.repository;
 
 import com.rest.dogs.entity.Dog;
-import com.rest.dogs.view.DogBreedView;
-import com.rest.dogs.view.DogNameView;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
 import java.util.List;
 
 @Repository
