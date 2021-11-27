@@ -10,9 +10,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.annotation.PostConstruct;
+
 @Configuration
 @EnableWebSecurity
 public class SeurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private CryptEncoder passwordEncoder;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -29,13 +34,8 @@ public class SeurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("admin")
-                .password(encoder().encode("password"))
+                .password(passwordEncoder.encoder().encode("password"))
                 .roles("USER");
-    }
-
-    @Bean
-    public PasswordEncoder encoder() {
-        return new BCryptPasswordEncoder();
     }
 
 }
