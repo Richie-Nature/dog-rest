@@ -14,7 +14,7 @@ import javax.annotation.PostConstruct;
 
 @Configuration
 @EnableWebSecurity
-public class SeurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private CryptEncoder passwordEncoder;
