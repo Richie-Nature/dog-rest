@@ -1,6 +1,7 @@
 package com.rest.dogs.web;
 
 
+import com.rest.dogs.security.CryptEncoder;
 import com.rest.dogs.security.SecurityConfig;
 import com.rest.dogs.service.DogService;
 import org.junit.Test;
@@ -31,8 +32,6 @@ public class DogControllerUnitTest {
     @MockBean
     private DogService dogService;
 
-//    @MockBean
-//    SecurityConfig securityConfig;
 
     @Test
     public void getAllDogs() throws Exception {
