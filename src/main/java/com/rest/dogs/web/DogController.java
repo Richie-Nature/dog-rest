@@ -1,6 +1,7 @@
 package com.rest.dogs.web;
 
 import com.rest.dogs.entity.Dog;
+import com.rest.dogs.entity.DogResponse;
 import com.rest.dogs.exception.DogNotFoundException;
 import com.rest.dogs.service.DogService;
 import com.rest.dogs.view.DogBreedView;
@@ -26,9 +27,10 @@ public class DogController {
     }
 
     @GetMapping("/dogs")
-    public ResponseEntity<List<Dog>> getAllDogs() {
-        List<Dog> list = dogService.retrieveDogs();
-        return new ResponseEntity<List<Dog>>(list, HttpStatus.OK);
+    public ResponseEntity<DogResponse> getAllDogs() {
+        DogResponse response = new DogResponse();
+        response.setDogs(dogService.retrieveDogs());
+        return new ResponseEntity<DogResponse>(response, HttpStatus.OK);
     }
 
     @GetMapping("/dogs/breed")

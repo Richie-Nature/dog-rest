@@ -17,7 +17,7 @@ import javax.annotation.PostConstruct;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private CryptEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("admin")
-                .password(passwordEncoder.encoder().encode("password"))
+                .password(passwordEncoder.encode("password"))
                 .roles("USER");
     }
 
